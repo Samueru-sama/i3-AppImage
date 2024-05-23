@@ -16,5 +16,4 @@ The patched version contains this patch that fixes an issue that affects multi m
 
 The version is built from this fork where I merged that fix: https://github.com/Samueru-sama/i3
 
-
-
+This appimage works without fuse2 as it can use fuse3 instead.
