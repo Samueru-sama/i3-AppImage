@@ -2,7 +2,7 @@
 
 Unofficial AppImage of i3: https://github.com/i3/i3
 
-Works like the regular i3, once launch AppRun exports its `/usr/bin` directory to `$PATH` so that after i3 is started you can use `i3-msg` and others.
+Works like the regular i3, once launched AppRun exports its `/usr/bin` directory to `$PATH` so that after i3 is started you can use `i3-msg` and others.
 
 # HOW TO START? 
 
