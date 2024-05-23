@@ -46,7 +46,7 @@ Hidden=true
 EOF
 
 # MAKE APPIMAGE
-cd .. && wget "$LINUXDEPLOY" -O linuxdeploy && chmod a+x ./linuxdeploy && NO_STRIP=true ./linuxdeploy --appdir "$APPDIR" --executable "$APPDIR"/usr/bin/"$EXEC" --output appimage
+cd .. && wget "$LINUXDEPLOY" -O linuxdeploy && chmod a+x ./linuxdeploy && ./linuxdeploy --appdir "$APPDIR" --executable "$APPDIR"/usr/bin/"$EXEC" --output appimage
 
 # LIBFUSE3
 [ -n "$APPDIR" ] && ls *AppImage && rm -rf ./"$APPDIR" || exit 1
