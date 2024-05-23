@@ -17,11 +17,12 @@ jobs:
     - name: build
       run: |
         sudo apt update
-        sudo apt install libfuse2 gcc xsltproc autopoint libcairo2-dev xcb-proto libnl-genl-3-dev libxcb-composite0-dev libxcb-xrm-dev libxcb1-dev libxkbcommon-dev
-        sudo apt install libuv1-dev pkg-config libxcb-cursor-dev libxcb-util-dev python3-pip libxcb-randr0-dev libxcb-util0-dev libcurlpp-dev libxcb-ewmh2
+        sudo apt install libev-dev libxkbcommon-dev libpango1.0-dev libcurl4-openssl-dev libxkbcommon-x11-dev libpango1.0-dev libpangocairo-1.0-0
+        sudo apt install libfuse2 gcc xsltproc autopoint libcairo2-dev xcb-proto libnl-genl-3-dev libxcb-composite0-dev libxcb-xrm-dev libxcb1-dev
+        sudo apt install libuv1-dev pkg-config libxcb-cursor-dev libxcb-util-dev python3-pip libxcb-randr0-dev libxcb-util0-dev libcurlpp-dev libxcb-ewmh2 
         sudo pip3 install packaging meson
-        sudo apt install libxcb-xkb-dev i3-wm libjsoncpp-dev libxcb-image0-dev libmpdclient-dev libxcb-icccm4-dev libalsaplayer-dev libalsaplayer0  libcurl4-openssl-dev
-        sudo apt install libncursesw5-dev autotools-dev autoconf automake build-essential ninja-build libxcb-ewmh-dev python3-xcbgen libpulse-dev libxkbcommon-x11-dev
+        sudo apt install libxcb-xkb-dev i3-wm libjsoncpp-dev libxcb-image0-dev libmpdclient-dev libxcb-icccm4-dev libalsaplayer-dev libalsaplayer0
+        sudo apt install libncursesw5-dev autotools-dev autoconf automake build-essential ninja-build libxcb-ewmh-dev python3-xcbgen libpulse-dev
         sudo apt install libxcb-keysyms1-dev libmpdclient2 libxcb-xinerama0-dev libasound2-dev libiw-dev libyajl-dev libstartup-notification0-dev
         wget https://raw.githubusercontent.com/Samueru-sama/i3-AppImage/main/i3-AppImage-patched.sh
         chmod a+x ./i3-AppImage-patched.sh
