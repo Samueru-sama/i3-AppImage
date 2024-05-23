@@ -22,9 +22,9 @@ jobs:
         sudo pip3 install packaging meson
         sudo apt install libxcb-xkb-dev i3-wm libjsoncpp-dev libxcb-image0-dev libmpdclient-dev libxcb-icccm4-dev libalsaplayer-dev libalsaplayer0
         sudo apt install libncursesw5-dev autotools-dev autoconf automake build-essential ninja-build libxcb-ewmh-dev python3-xcbgen libpulse-dev libmpdclient2
-        wget https://raw.githubusercontent.com/Samueru-sama/i3-AppImage/main/i3-appimage-patched.sh
-        chmod a+x ./i3-appimage-patched.sh
-        ./i3-appimage-patched.sh
+        wget https://raw.githubusercontent.com/Samueru-sama/i3-AppImage/main/i3-AppImage-patched.sh
+        chmod a+x ./i3-AppImage-patched.sh
+        ./i3-AppImage-patched.sh
         mkdir dist
         mv *AppImage dist/
 
