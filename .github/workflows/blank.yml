@@ -25,8 +25,10 @@ jobs:
         sudo apt install libncursesw5-dev autotools-dev autoconf automake build-essential ninja-build libxcb-ewmh-dev python3-xcbgen libpulse-dev
         sudo apt install libxcb-keysyms1-dev libmpdclient2 libxcb-xinerama0-dev libasound2-dev libiw-dev libyajl-dev libstartup-notification0-dev
         wget https://raw.githubusercontent.com/Samueru-sama/i3-AppImage/main/i3-AppImage-patched.sh
-        chmod a+x ./i3-AppImage-patched.sh
+        wget https://raw.githubusercontent.com/Samueru-sama/i3-AppImage/main/i3-AppImage-git.sh
+        chmod a+x ./i3-AppImage*.sh
         ./i3-AppImage-patched.sh
+        ./i3-AppImage-git.sh
         mkdir dist
         mv *AppImage dist/
 
