@@ -29,7 +29,7 @@ export PATH="$PATH:$CURRENTDIR/usr/bin"
 unset ARGV0
 exec "$CURRENTDIR/usr/bin/i3" "$@"
 EOF
-chmod a+x ./AppRun ./usr/bin/*
+chmod a+x ./AppRun
 VERSION=$(./AppRun --version | awk '{print $3}')
 
 # Dummy desktop and Icon
@@ -48,6 +48,11 @@ EOF
 # MAKE APPIMAGE USING FUSE3 COMPATIBLE APPIMAGETOOL
 cd .. && wget "$LINUXDEPLOY" -O linuxdeploy && wget -q "$APPIMAGETOOL" -O ./appimagetool && chmod a+x ./linuxdeploy ./appimagetool || exit 1
 ./linuxdeploy --appdir "$APPDIR" --executable "$APPDIR"/usr/bin/"$EXEC" || exit 1
+#add i3lock-color
+wget -q "https://github.com/Raymo111/i3lock-color/releases/download/2.13.c.5/i3lock" -O "$APPDIR"/usr/bin/i3lock || exit 1
+chmod a+x "$APPDIR"/usr/bin/* && ln -s ../lib/libxcb-xrm.so.0 "$APPDIR"/usr/bin 
+patchelf --set-rpath '$ORIGIN' "$APPDIR"/usr/bin/i3lock
+
 ./appimagetool ./"$APPDIR" i3-patched-"$VERSION"-"$ARCH".AppImage || exit 1
 
 [ -n "$APP" ] && mv ./*.AppImage .. && cd .. && rm -rf ./"$APP" && echo "All Done!" || exit 1
