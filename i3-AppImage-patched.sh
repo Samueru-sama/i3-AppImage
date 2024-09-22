@@ -21,6 +21,9 @@ CURRENTDIR="$(dirname "$(readlink -f "$0")")" # DO NOT MOVE THIS
 git clone --recursive "$REPO" && cd i3 && meson setup build -Dprefix="$CURRENTDIR/usr" -Ddefault_library=static -Dmans=false -Ddocs=false \
 && ninja -C build && ninja -C build install && cd .. && rm -rf ./i3 ./usr/share/doc || exit 1
 
+#add i3lock-color
+wget -q "https://github.com/Raymo111/i3lock-color/releases/download/2.13.c.5/i3lock" -O ./usr/bin/i3lock
+
 # AppRun
 cat >> ./AppRun << 'EOF'
 #!/bin/sh
@@ -29,7 +32,7 @@ export PATH="$PATH:$CURRENTDIR/usr/bin"
 unset ARGV0
 exec "$CURRENTDIR/usr/bin/i3" "$@"
 EOF
-chmod a+x ./AppRun
+chmod a+x ./AppRun ./usr/bin/*
 VERSION=$(./AppRun --version | awk '{print $3}')
 
 # Dummy desktop and Icon
@@ -44,9 +47,6 @@ Exec=i3
 Categories=System
 Hidden=true
 EOF
-
-#add i3lock-color
-wget -q "https://github.com/Raymo111/i3lock-color/releases/download/2.13.c.5/i3lock" -O ./usr/bin/i3lock
 
 # MAKE APPIMAGE USING FUSE3 COMPATIBLE APPIMAGETOOL
 cd .. && wget "$LINUXDEPLOY" -O linuxdeploy && wget -q "$APPIMAGETOOL" -O ./appimagetool && chmod a+x ./linuxdeploy ./appimagetool || exit 1
