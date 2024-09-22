@@ -28,7 +28,7 @@ exec "$CURRENTDIR/usr/bin/i3" "$@"
 EOF
 chmod a+x ./AppRun
 
-APPVERSION=$(./AppRun --version | awk '{print $3}')
+VERSION=$(./AppRun --version | awk '{print $3}')
 
 # Dummy desktop and Icon
 rm -rf ./usr/share # The default .desktop just gives too many errors with linuxdeploy.
@@ -44,7 +44,8 @@ Hidden=true
 EOF
 
 # MAKE APPIMAGE USING FUSE3 COMPATIBLE APPIMAGETOOL
-cd .. && wget "$LINUXDEPLOY" -O linuxdeploy && wget -q "$APPIMAGETOOL" -O ./appimagetool && chmod a+x ./linuxdeploy ./appimagetool \
-&& ./linuxdeploy --appdir "$APPDIR" --executable "$APPDIR"/usr/bin/"$EXEC" && VERSION=git-"$APPVERSION" ./appimagetool -s ./"$APPDIR" || exit 1
+cd .. && wget "$LINUXDEPLOY" -O linuxdeploy && wget -q "$APPIMAGETOOL" -O ./appimagetool && chmod a+x ./linuxdeploy ./appimagetool || exit 1
+./linuxdeploy --appdir "$APPDIR" --executable "$APPDIR"/usr/bin/"$EXEC" || exit 1
+./appimagetool ./"$APPDIR" i3-"$VERSION"-"$ARCH".AppImage || exit 1
 
 [ -n "$APP" ] && mv ./*.AppImage .. && cd .. && rm -rf ./"$APP" && echo "All Done!" || exit 1
