@@ -21,9 +21,6 @@ CURRENTDIR="$(dirname "$(readlink -f "$0")")" # DO NOT MOVE THIS
 git clone --recursive "$REPO" && cd i3 && meson setup build -Dprefix="$CURRENTDIR/usr" -Ddefault_library=static -Dmans=false -Ddocs=false \
 && ninja -C build && ninja -C build install && cd .. && rm -rf ./i3 ./usr/share/doc || exit 1
 
-#add i3lock-color
-wget -q "https://github.com/Raymo111/i3lock-color/releases/download/2.13.c.5/i3lock" -O ./usr/bin/i3lock
-
 # AppRun
 cat >> ./AppRun << 'EOF'
 #!/bin/sh
