@@ -23,7 +23,7 @@ cat >> ./AppRun << 'EOF'
 #!/bin/sh
 CURRENTDIR="$(dirname "$(readlink -f "$0")")"
 export PATH="$PATH:$CURRENTDIR/usr/bin"
-unset ARGV0
+unset ARGV0 APPIMAGE APPDIR
 exec "$CURRENTDIR/usr/bin/i3" "$@"
 EOF
 chmod a+x ./AppRun
