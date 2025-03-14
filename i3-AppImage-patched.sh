@@ -11,7 +11,7 @@ REPO="https://github.com/Samueru-sama/i3.git"
 EXEC="$APP"
 
 LINUXDEPLOY="https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
-APPIMAGETOOL="https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage"
+APPIMAGETOOL="https://github.com/pkgforge-dev/appimagetool-uruntime/releases/download/continuous/appimagetool-x86_64.AppImage"
 
 # CREATE DIRECTORIES
 [ -n "$APP" ] && mkdir -p ./"$APP/$APPDIR" && cd ./"$APP/$APPDIR" || exit 1
@@ -53,6 +53,6 @@ wget -q "https://github.com/Raymo111/i3lock-color/releases/download/2.13.c.5/i3l
 chmod a+x "$APPDIR"/usr/bin/* && ln -s ../lib/libxcb-xrm.so.0 "$APPDIR"/usr/bin 
 patchelf --set-rpath '$ORIGIN' "$APPDIR"/usr/bin/i3lock
 
-./appimagetool ./"$APPDIR" i3-patched-"$VERSION"-"$ARCH".AppImage || exit 1
+URUNTIME_PRELOAD=1 ./appimagetool ./"$APPDIR" i3-patched-"$VERSION"-"$ARCH".AppImage || exit 1
 
 [ -n "$APP" ] && mv ./*.AppImage .. && cd .. && rm -rf ./"$APP" && echo "All Done!" || exit 1
